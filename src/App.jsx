@@ -4,7 +4,6 @@ import "./components/settings.css";
 import Nav from "./components/Nav/Nav";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
-import LoadingScreen from "./components/LoadingScreen/loadingScreen";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
