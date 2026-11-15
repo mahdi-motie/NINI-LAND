@@ -189,7 +189,7 @@ import "./Nav.css";
 
 export default function CreativeNav({
   items = DEFAULT_ITEMS,
-  brand = "فولیو",
+  brand = "",
   activeHref,
   onNavigate,
   dripStretch = 1,
