@@ -1,0 +1,9 @@
+{
+    "nav": [
+    {
+      "id": "1",
+      "type": "nike logo",
+      "img": "./src/assets/image/nike-4-logo-svgrepo-com.svg"
+    }
+  ]
+}

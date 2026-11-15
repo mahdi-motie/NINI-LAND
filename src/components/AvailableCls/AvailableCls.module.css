@@ -1,0 +1,126 @@
+.AvailableCls {
+  width: 90%;
+  max-width: 2000px;
+  height: 500px;
+  margin: 80px auto;
+  /* background-color: green; */
+}
+.topSideTitle {
+  width: 100%;
+  text-align: left;
+}
+.topSideTitle .title {
+  width: 100%;
+  line-height: 40px;
+  font-size: 45px;
+  font-family: English;
+}
+
+.sliderSide {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: repeat(4, 1fr); */
+  gap: 15px;
+  width: 100%;
+  /* max-width: 100%; */
+  margin-top: 20px;
+  transition: 350ms;
+}
+
+@media (max-width: 1025px) {
+  .sliderSide {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 15px;
+    width: 100%;
+    /* max-width: 100%; */
+    margin-top: 20px;
+  }
+}
+@media (max-width: 720px) {
+  .sliderSide {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    /* max-width: 100%; */
+    margin-top: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .sliderSide {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 15px;
+    width: 100%;
+    /* max-width: 100%; */
+    margin-top: 20px;
+  }
+}
+
+.topCardImage {
+  width: 100%;
+  height: 85%;
+  object-fit: cover;
+  position: relative;
+}
+.topCardImage img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  padding-bottom: 10px;
+  transition: 550ms;
+}
+.topCardImage:hover img {
+  filter: brightness(0.6);
+}
+
+.topCardImage .viewmore {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.topCardImage a.ViewMoreLink {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  /* border: 1px solid black; */
+}
+.topCardImage a.ViewMoreLink .ViewmoreBtn {
+  width: 80px;
+  height: 35px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid white;
+  display: none;
+}
+.topCardImage:hover a.ViewMoreLink .ViewmoreBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottomCardDetails {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  font-family: Farsi;
+  font-size: 18px;
+  color: black;
+}
+.bottomCardDetails .cardPrice {
+  font-weight: 600;
+  /* text-decoration: underline red; */
+}

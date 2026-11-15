@@ -1,0 +1,225 @@
+.rk3 {
+  --ink: #1d1f23;
+  --accent: ${ACCENT};
+  padding: 32px 16px;
+  font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+}
+.rk3-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  aspect-ratio: 16/9;
+  min-height: 320px;
+  max-height: 86vh;
+  border-radius: 28px;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 70% 35%, #fdfdfc 0%, #e3e7ea 100%);
+  touch-action: pan-y;
+}
+.rk3-stage canvas {
+  display: block;
+  width: 100%;
+}
+.rk3-hint {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24%;
+  margin: 0;
+  text-align: center;
+  color: #7d868e;
+  font-size: clamp(0.8rem, 1.4vw, 1.05rem);
+  pointer-events: none;
+}
+.rk3-fail {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+}
+.rk3-ctaPos {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+.rk3-cta {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: auto;
+  white-space: nowrap;
+  padding: 0.9em 1.8em;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+  font-size: clamp(0.8rem, 1.3vw, 1rem);
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  transform: translateX(-50%);
+  animation: rk3-emerge 0.55s 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+  transition: background 0.2s;
+}
+.rk3-cta:hover {
+  background: var(--accent);
+}
+.rk3-cta:focus-visible,
+.rk3-chips button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+@keyframes rk3-emerge {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -56px) scale(0.6, 0.35);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+.rk3-chips {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+.rk3-chips button {
+  padding: 0.6em 1.3em;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.rk3-chips button[aria-pressed="true"] {
+  background: var(--ink);
+  color: #fff;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rk3-cta {
+    animation-duration: 0.01s;
+    animation-delay: 0s;
+  }
+}
+
+@media (min-width: 750px) {
+  .rk3 {
+    --ink: #1d1f23;
+    --accent: ${ACCENT};
+    padding: 32px 16px;
+    font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    color: var(--ink);
+  }
+  .rk3-stage {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    min-height: 320px;
+    max-height: 86vh;
+    border-radius: 28px;
+    overflow: hidden;
+    background: radial-gradient(120% 90% at 70% 35%, #fdfdfc 0%, #e3e7ea 100%);
+    touch-action: pan-y;
+  }
+  .rk3-stage canvas {
+    display: block;
+    width: 100%;
+  }
+  .rk3-hint {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24%;
+    margin: 0;
+    text-align: center;
+    color: #7d868e;
+    font-size: clamp(0.8rem, 1.4vw, 1.05rem);
+    pointer-events: none;
+  }
+  .rk3-fail {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    margin: 0;
+  }
+  .rk3-ctaPos {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    will-change: transform;
+  }
+  .rk3-cta {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: auto;
+    white-space: nowrap;
+    padding: 0.9em 1.8em;
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 600;
+    font-size: clamp(0.8rem, 1.3vw, 1rem);
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    transform: translateX(-50%);
+    animation: rk3-emerge 0.55s 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+    transition: background 0.2s;
+  }
+  .rk3-cta:hover {
+    background: var(--accent);
+  }
+  .rk3-cta:focus-visible,
+  .rk3-chips button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+  @keyframes rk3-emerge {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -56px) scale(0.6, 0.35);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+  }
+  .rk3-chips {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 18px;
+  }
+  .rk3-chips button {
+    padding: 0.6em 1.3em;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    background: none;
+    color: var(--ink);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .rk3-chips button[aria-pressed="true"] {
+    background: var(--ink);
+    color: #fff;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rk3-cta {
+      animation-duration: 0.01s;
+      animation-delay: 0s;
+    }
+  }
+}

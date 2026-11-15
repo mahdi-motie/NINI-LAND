@@ -1,0 +1,324 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap");
+
+.cn-wrap {
+  --cn-ink: #ac9f9f;
+  --cn-paper: #ffffff;
+  --cn-pop: #f31151;
+  --cn-ease: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 12px;
+  font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  pointer-events: none;
+}
+.cn-wrap * {
+  box-sizing: border-box;
+}
+
+.cn-pillwrap {
+  position: relative;
+  pointer-events: auto;
+  /* one soft shadow for the bar + drips together */
+  filter: drop-shadow(0 10px 14px rgba(16, 24, 39, 0.35));
+}
+/* drip edge: clipped box under the bar; the svg slides down inside it */
+.cn-drip-clip {
+  position: absolute;
+  left: 0;
+  top: calc(100% - 2px);
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+  color: var(--cn-ink);
+  pointer-events: none;
+}
+.cn-drip {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+  transform: translateY(-101%);
+  /* retract: quick and tidy */
+  transition: transform 0.45s cubic-bezier(0.6, 0, 0.9, 0.5);
+}
+/* only the painted ink counts as "hover", not the empty gaps between drips */
+.cn-drip path,
+.cn-drip rect {
+  pointer-events: auto;
+}
+
+.cn-pillwrap:hover .cn-drip,
+.cn-pillwrap:focus-within .cn-drip {
+  transform: translateY(-5%);
+  transition: transform 1s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+
+.cn-pill {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 6px 6px 6px 8px;
+  background: var(--cn-ink);
+  color: var(--cn-paper);
+  border-radius: 28px;
+  /* un-hover: keep the flat corners until the drips have retracted (0.45s) */
+  transition: border-radius 0.2s 0.45s;
+}
+@media (min-width: 721px) {
+  .cn-pillwrap:hover .cn-pill,
+  .cn-pillwrap:focus-within .cn-pill {
+    border-radius: 28px 28px 0 0;
+    transition: border-radius 0.08s 0s;
+  }
+}
+
+/* brand */
+.cn-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 6px;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  border-radius: 999px;
+}
+.cn-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--cn-pop);
+  color: var(--cn-ink);
+  transition: transform 0.7s var(--cn-ease);
+}
+.cn-brand:hover .cn-mark,
+.cn-brand:focus-visible .cn-mark {
+  transform: rotate(180deg) scale(1.08);
+}
+
+/* links + liquid highlight */
+.cn-list {
+  position: relative;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cn-blob {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 999px;
+  background: var(--cn-pop);
+  transition:
+    transform 0.55s var(--cn-ease),
+    width 0.55s var(--cn-ease),
+    opacity 0.2s;
+}
+.cn-link {
+  position: relative;
+  display: block;
+  padding: 10px 18px;
+  color: var(--cn-paper);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 999px;
+  transition: color 0.25s;
+}
+.cn-link[data-on="true"] {
+  color: var(--cn-paper);
+}
+.cn-link:focus-visible,
+.cn-brand:focus-visible,
+.cn-toggle:focus-visible,
+.cn-panel a:focus-visible {
+  outline: 2px solid var(--cn-paper);
+  outline-offset: 2px;
+}
+.cn-link[data-on="true"]:focus-visible {
+  outline-color: var(--cn-ink);
+}
+
+/* rolling label: two copies stacked, slide up on hover */
+.cn-roll {
+  display: block;
+  height: 1.25em;
+  line-height: 1.25em;
+  overflow: hidden;
+}
+.cn-roll > span {
+  display: block;
+  transition: transform 0.4s var(--cn-ease);
+}
+.cn-link:hover .cn-roll > span,
+.cn-link:focus-visible .cn-roll > span {
+  transform: translateY(-100%);
+}
+
+/* mobile toggle (hidden on desktop) */
+.cn-toggle {
+  display: none;
+}
+.cn-panel {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .cn-pill {
+    direction: ltr;
+    gap: 10px;
+    width: min(100%, 360px);
+    justify-content: space-between;
+    border-radius: 999px;
+  }
+  .cn-drip-clip {
+    display: none;
+  }
+  .cn-list {
+    display: none;
+  }
+
+  .cn-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 8px 0 16px;
+    height: 38px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--cn-pop);
+    color: var(--cn-ink);
+    font: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .cn-bars {
+    position: relative;
+    width: 22px;
+    height: 22px;
+  }
+  .cn-bars i {
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition:
+      transform 0.45s var(--cn-ease),
+      top 0.45s var(--cn-ease);
+  }
+  .cn-bars i:first-child {
+    top: 7px;
+  }
+  .cn-bars i:last-child {
+    top: 13px;
+  }
+  .cn-pill[data-open="true"] .cn-bars i:first-child {
+    top: 10px;
+    transform: rotate(45deg);
+  }
+  .cn-pill[data-open="true"] .cn-bars i:last-child {
+    top: 10px;
+    transform: rotate(-45deg);
+  }
+
+  .cn-panel {
+    width: 80vw !important;
+    display: block;
+    pointer-events: none;
+    width: min(100%, 360px);
+    margin-top: 8px;
+    padding: 10px;
+    background: var(--cn-ink);
+    border-radius: 28px;
+    transform-origin: top center;
+    transform: scaleY(0.6) translateY(-12px);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform 0.5s var(--cn-ease),
+      opacity 0.2s,
+      visibility 0s 0.5s;
+  }
+  .cn-panel[data-open="true"] {
+    pointer-events: auto;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    transition:
+      transform 0.5s var(--cn-ease),
+      opacity 0.25s,
+      visibility 0s;
+  }
+  .cn-panel ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cn-panel a {
+    display: block;
+    padding: 12px 18px;
+    border-radius: 18px;
+    color: var(--cn-paper);
+    text-decoration: none;
+    text-align: right;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      padding-left 0.35s var(--cn-ease);
+  }
+  .cn-panel a:hover,
+  .cn-panel a[aria-current="page"] {
+    background: var(--cn-pop);
+    color: var(--cn-ink);
+    padding-left: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cn-wrap *,
+  .cn-wrap *::before,
+  .cn-wrap *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@font-face {
+  font-family: Farsi;
+  src: url(../../assets/fonts/IRANSansXV-s.p.0lq621xr9boph.woff);
+}
+@font-face {
+  font-family: English;
+  src: url(../../assets/fonts/MonumentExtended_Ultrabold-s.p.0eok~dcoowmeg.otf);
+}
+body {
+  background-color: #eef0f1;
+}
+
+@media (max-width: 340px) {
+  body {
+    display: none;
+  }
+}
