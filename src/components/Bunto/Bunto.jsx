@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import "./ClotheCtg.css";
+import "./Bunto.css";
 
 const K = [
   {
